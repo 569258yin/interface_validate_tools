@@ -92,7 +92,7 @@
             text-align: center;
         }
 
-        .page-icon a,.page-disabled,.page-next {
+        .page-icon a, .page-disabled, .page-next {
             border: 1px solid #ccc;
             border-radius: 3px;
             padding: 4px 10px 5px;
@@ -115,7 +115,7 @@
             color: #cccccc;
         }
 
-        .page-next i,.page-disabled i {
+        .page-next i, .page-disabled i {
             cursor: pointer;
             display: inline-block;
             width: 5px;
@@ -184,18 +184,19 @@
             <th>自定义代码</th>
             <th>操作</th>
         </tr>
+ <#list configs as config>
         <tr>
-            <td>1</td>
-            <td>int-spring-cl-front-vehicle</td>
-            <td>cl-front-vehicle.getAllProducts</td>
-            <td>Head</td>
-            <td>LB</td>
-            <td>GET</td>
-            <td>localhost:8080/vehicle/getAllProducts</td>
-            <td>LB</td>
-            <td>GET</td>
-            <td>localhost:8080/vehicle/getAllProducts</td>
-            <td>启用</td>
+            <td>${config.id}</td>
+            <td>${config.appId}</td>
+            <td>${config.method}</td>
+            <td>${config.type}</td>
+            <td>${config.oldHttpType}</td>
+            <td>${config.oldHttpMethod}</td>
+            <td>${config.oldHttpUrl}</td>
+            <td>${config.newHttpType}</td>
+            <td>${config.newHttpMethod}</td>
+            <td>${config.newHttpUrl}</td>
+            <td>${config.status}</td>
             <td>
                 <div>
                     <button id="resultBtn">查看结果</button>
@@ -214,12 +215,13 @@
                 </div>
             </td>
         </tr>
+</#list>
+
     </table>
 </div>
 
 <br>
 <br>
-
 <div class="page-icon">
     <span class="page-disabled"><i></i>上一页</span>
     <span class="page-current">1</span>
