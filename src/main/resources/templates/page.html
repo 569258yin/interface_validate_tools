@@ -1,0 +1,193 @@
+<html>
+<body>
+<div>
+
+    <div>
+
+        <table>
+
+            <#list page.content as pageContent]
+
+            <tr>
+
+                <td>
+
+                    <span>${pageContent.id}</span>
+
+                </td>
+
+            </tr>
+
+            [/#list]
+
+        </table>
+
+    </div>
+
+    <div id="" class="">
+
+        [#if page.totalPages = 0]
+
+        <span class="page2">
+
+                [@spring.messageArgs "tenement.page.display", [1 , 1]/]
+
+                <a name="changePage" href="" class="">
+
+                    <span style="">1</span>
+
+                </a>
+
+            </span>
+
+        <span class="page1">
+
+                <a class="  "><<${message("page.first")}</a>
+
+                <a class="  "><${message("page.previous")}</a>
+
+                <a class="  ">${message("page.next")}></a>
+
+                <a class="  ">${message("page.last")}>></a>
+
+            </span>
+
+        [#else]
+
+        <span class="page2">
+
+                <a>
+
+                    [@spring.messageArgs "tenement.page.display", [pageable.pageNumber + 1 , page.totalPages]/]
+
+                </a>
+
+                [#if page.totalPages > 4 ]
+
+                    [#if pageable.pageNumber > 1 && pageable.pageNumber < page.totalPages - 2]
+
+                        [#list pageable.pageNumber - 2.. pageable.pageNumber + 2 as m]
+
+                            <a name="" href="?page=${m}" class="">
+
+                                [#if pageable.pageNumber = m]
+
+                                    <span style="">${m+1}</span>
+
+                                [#else]
+
+                                    ${m+1}
+
+                                [/#if]
+
+                            </a>
+
+                        [/#list]
+
+                    [/#if]
+
+                    [#if pageable.pageNumber < 2 ]
+
+                        [#list 0.. 4 as m]
+
+                            <a name="" href="?page=${m}" class="">
+
+                                [#if pageable.pageNumber = m]
+
+                                    <span style="">${m+1}</span>
+
+                                [#else]
+
+                                    ${m+1}
+
+                                [/#if]
+
+                            </a>
+
+                        [/#list]
+
+                    [/#if]
+
+                    [#if pageable.pageNumber > page.totalPages - 3 ]
+
+                        [#list page.totalPages - 5.. page.totalPages - 1 as m]
+
+                            <a name="changePage" href="?page=${m}" class="">
+
+                                [#if pageable.pageNumber = m]
+
+                                    <span style="">${m+1}</span>
+
+                                [#else]
+
+                                    ${m+1}
+
+                                [/#if]
+
+                            </a>
+
+                        [/#list]
+
+                    [/#if]
+
+                [/#if]
+
+                [#if page.totalPages < 5 ]
+
+                    [#list 0.. page.totalPages - 1 as m]
+
+                        <a name="" href="?page=${m}" class="">
+
+                            [#if pageable.pageNumber = m]
+
+                                <span style="">${m+1}</span>
+
+                            [#else]
+
+                                ${m+1}
+
+                            [/#if]
+
+                        </a>
+
+                    [/#list]
+
+                [/#if]
+
+            </span>
+
+        <span class="page1">
+
+                <a name="" href="?page=0" class=""><<${message("page.first")}</a>
+
+                [#if page.hasPrevious()]
+
+                        <a name="" href="?page=${page.number - 1}" class=""><${message("page.previous")}</a>
+
+                [#else]
+
+                        <a class=" "><${message("page.previous")}</a>
+
+                [/#if]
+
+                [#if page.hasNext()]
+
+                        <a name="" href="?page=${page.number + 1}"       class="">${message("page.next")}></a>
+
+                [#else]
+
+                        <a class=" ">${message("page.next")}></a>
+
+                [/#if]
+
+                    <a name="" href="?page=${page.totalPages - 1}" class="">${message("page.last")}>></a>
+
+            </span>
+
+        [/#if]
+
+    </div>
+
+</div>
+</body>
+</html>

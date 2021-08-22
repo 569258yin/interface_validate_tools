@@ -4,136 +4,19 @@
 <head>
     <title>配置后台</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
 
-    <style type="text/css">
-        .search_div {
-            padding: 20px;
-            display: inline-block;
+    <script type="application/javascript">
+        function addVieShow(){
+            document.getElementById('light').style.display = 'block';
+            document.getElementById('fade').style.display = 'block';
         }
 
-        .search_div input {
-            height: 25px;
-            width: 250px;
+        function addViewClose(){
+            document.getElementById('light').style.display='none';
+            document.getElementById('fade').style.display='none';
         }
-
-        .search_div select {
-            height: 25px;
-            width: 80px;
-        }
-
-        .search_div button {
-            background-color: cadetblue;
-        }
-
-        .search_head {
-            background-color: gainsboro;
-            padding: 10px;
-            border-bottom: 2px solid royalblue;
-        }
-
-        .add_head {
-            padding: 20px;
-            float: right;
-
-        }
-
-        .add_head button {
-            background-color: burlywood;
-        }
-
-
-        .head {
-            padding: 20px;
-            height: 140px;
-            background-color: aliceblue;
-        }
-
-        button {
-            width: 80px;
-            height: 25px;
-        }
-
-        .div_body table {
-            border-collapse: collapse;
-            border: 1px solid;
-            text-align: center;
-            /*margin: 0 auto;*/
-        }
-
-        .div_body table tr {
-            border: 1px solid;
-        }
-
-        .div_body table th {
-            height: 30px;
-            background-color: darkgray;
-            border: 1px solid;
-        }
-
-        .div_body table td {
-            height: 20px;
-            border: 1px solid;
-        }
-
-        . div {
-            padding: 5px;
-        }
-
-        .div_body button {
-            margin: 5px;
-            width: 80px;
-            height: 30px;
-        }
-
-        .page-icon {
-            margin-right: 50px;
-            float: right;
-            font-size: 0;
-            text-align: center;
-        }
-
-        .page-icon a,.page-disabled,.page-next {
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            padding: 4px 10px 5px;
-            font-size: 14px;
-            margin-right: 10px;
-        }
-
-        .page-icon a {
-            text-decoration: none;
-            color: #005aa0;
-        }
-
-        .page-current {
-            color: #ff6600;
-            padding: 4px 10px 5px;
-            font-size: 15px;
-        }
-
-        .page-disabled {
-            color: #cccccc;
-        }
-
-        .page-next i,.page-disabled i {
-            cursor: pointer;
-            display: inline-block;
-            width: 5px;
-            height: 9px;
-        }
-
-        .page-disabled i {
-            background-position: -80px -608px;
-            margin-right: 3px;
-        }
-
-
-        .page-next i {
-            background-position: -62px -608px;
-            margin-right: 3px;
-        }
-
-    </style>
+    </script>
 </head>
 
 <body>
@@ -203,7 +86,37 @@
             </td>
             <td>
                 <div>
-                    <button id="divParamBtn">参数</button>
+                    <button class="leftBtn" id="divParamBtn">参数</button>
+                    <button class="rightBtn" id="divResultBtn">结果</button>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <button class="leftBtn" id="updateBtn">修改</button>
+                    <button id="deleteBtn">删除</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>int-spring-cl-front-vehicle</td>
+            <td>cl-front-vehicle.getAllProducts</td>
+            <td>Head</td>
+            <td>LB</td>
+            <td>GET</td>
+            <td>localhost:8080/vehicle/getAllProducts</td>
+            <td>LB</td>
+            <td>GET</td>
+            <td>localhost:8080/vehicle/getAllProducts</td>
+            <td>启用</td>
+            <td>
+                <div>
+                    <button id="resultBtn">查看结果</button>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <button class="leftBtn" id="divParamBtn">参数</button>
                     <button id="divResultBtn">结果</button>
                 </div>
             </td>
