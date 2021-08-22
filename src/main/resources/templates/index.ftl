@@ -34,7 +34,7 @@
     </div>
     <div class="add_head">
         <div>
-            <button id="addBtn" onclick="addVieShow()">新增</button>
+            <button id="addBtn" onclick="javascrtpt:window.location.href='view/add'">新增</button>
         </div>
     </div>
 </div>
@@ -63,7 +63,11 @@
                 <td class="column-id">${config.id}</td>
                 <td class="column-appId">${config.appId}</td>
                 <td class=column-method">${config.method}</td>
-                <td class="column-type">${config.type}</td>
+                <td class="column-type">
+                    <#list typeSelect as type>
+                        <#if type.id = config.type>${type.value}</#if>
+                    </#list>
+                </td>
                 <td class=column-i-type">${config.oldHttpType}</td>
                 <td class="column-i-method">${config.oldHttpMethod}</td>
                 <td class="column-i-url">${config.oldHttpUrl}</td>
@@ -84,7 +88,7 @@
                 </td>
                 <td class="column-operate">
                     <div>
-                        <button class="leftBtn" id="updateBtn">修改</button>
+                        <button class="leftBtn" id="updateBtn" onclick="javascrtpt:window.location.href='view/update?id=${config.id}'">修改</button>
                         <button class="rightBtn" id="deleteBtn">删除</button>
                     </div>
                 </td>

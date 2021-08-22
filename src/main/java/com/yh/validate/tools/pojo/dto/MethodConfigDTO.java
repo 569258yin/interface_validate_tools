@@ -8,7 +8,7 @@ public class MethodConfigDTO {
     private Integer id;
     private String appId;
     private String method;
-    private String type;
+    private Integer type;
     private String oldHttpType;
     private String oldHttpMethod;
     private String oldHttpUrl;

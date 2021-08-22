@@ -4,8 +4,6 @@
 <head>
     <title>新增</title>
     <meta charset="UTF-8">
-    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
-    <link rel="script" href="js/add.js">
 
     <style type="text/css">
         .model, .model div {
@@ -48,13 +46,14 @@
 <div style="height: 150px; padding: 10px">
     <div class="model">
         <div>
-            <span>AppId:</span><input style="width: 240px" id="appIdBtn">
+            <span>AppId:</span><input style="width: 240px" id="appIdBtn" value="${(config.appId)!''}">
         </div>
-        <div><span>Method:</span><input style="width: 300px" id="methodBtn"></div>
+        <div><span>Method:</span><input style="width: 300px" id="methodBtn" value="${(config.method)!''}"></div>
         <div><span>类型:</span>
             <select id="typeBtn">
-                <option>Head</option>
-                <option>Url</option>
+                <#list typeSelect as type>
+                    <option value="${type.id}" <#if type.id == config.type!-1>selected</#if> >${type.value}</option>
+                </#list>
             </select>
         </div>
         <div><span>状态:</span>
@@ -66,9 +65,9 @@
     </div>
     <div class="model">
         <div><span>老接口调用类型:</span><select id="oldITypeBtn">
-            <option>Feign</option>
-            <option>LB</option>
-        </select></div>
+                <option>Feign</option>
+                <option>LB</option>
+            </select></div>
         <div><span>老接口调用方式:</span>
             <select id="oldIMethodBtn">
                 <option>GET</option>
@@ -181,10 +180,44 @@
 </div>
 <hr style="height:1px;border:none;border-top:1px solid #555555;"/>
 <div style="padding: 10px;height: 20px;text-align: center">
-    <button style="background-color: burlywood;margin-right: 120px" id="cancelBtn" href="javascript:void(0)" onclick="addViewClose()">取消</button>
-    <button style="background-color: #ff6600;margin-left: 120px" id="saveBtn" href="javascript:void(0)" onclick="add()">保存</button>
+    <button style="background-color: burlywood;margin-right: 120px" id="cancelBtn" href="javascript:void(0)"
+            onclick="addViewClose()">取消
+    </button>
+    <button style="background-color: #ff6600;margin-left: 120px" id="saveBtn" href="javascript:void(0)" onclick="add()">
+        保存
+    </button>
 </div>
 
+<script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+<script type="application/javascript">
+    function add() {
+        $.ajax({
+            url: '../config/add',
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json",
+            headers: {
+
+            },
+            data: JSON.stringify({
+                'id': $('#id').val(),
+                'appId': $('#appIdBtn').val(),
+                'method': $('#methodBtn').val(),
+                'type': $('#typeBtn').val(),
+                'status': $('#statusBtn').val(),
+                'oldHttpType': $('#oldITypeBtn').val(),
+                'oldHttpMethod': $('#oldIMethodBtn').val(),
+                'oldHttpUrl': $('#oldIUrlBtn').val(),
+                'newHttpType': $('#oldITypeBtn').val(),
+                'newHttpMethod': $('#oldIMethodBtn').val(),
+                'newHttpUrl': $('#oldIUrlBtn').val()
+            }),
+            success: function (data) {
+                addViewClose();
+            }
+        });
+    }
+</script>
 </body>
 
 </html>
